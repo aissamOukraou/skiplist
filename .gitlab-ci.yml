@@ -1,6 +1,10 @@
 skiplist-build:
   stage: build
   image: gcc
+  only:
+    changes:
+      - ".gitlab-ci.yml"
+      - "src/*"
   script:
     - cd src
     - make test_skipliste
@@ -10,6 +14,10 @@ skiplist-build:
 
 skiplist-test:
   stage: test
+  only:
+    changes:
+      - ".gitlab-ci.yml"
+      - "src/*"
   script:
     - src/test_skipliste
   dependencies:
@@ -21,6 +29,10 @@ tikz-build:
   script:
     - cd images
     - find . -type f -name "*.tex" -exec latexmk -pdf {} \;
+  only:
+    changes:
+      - ".gitlab-ci.yml"
+      - "images/*.tex"
   artifacts:
     paths:
       - "images/*.pdf"
