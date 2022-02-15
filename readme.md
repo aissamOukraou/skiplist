@@ -47,6 +47,8 @@ sorte que les valeurs stockées dans la skip liste soient toujours triées.
 
 ### Insertion
 
+#### Principe
+
 Dans une skip liste, on ne peut pas choisir d'ajouter en tête ou en queue de
 liste. Les valeurs sont triées dans la liste. Ainsi l'endroit où vient s'insérer
 une nouvelle valeur dépend de cette valeur par rapport aux autres déjà présentes
@@ -56,7 +58,13 @@ façon d'insérer est d'avancer dans la liste jusqu'à trouver une cellule dont 
 valeur est plus petite que la valeur insérée, et donc la suivante a une valeur
 plus grande. La nouvelle cellule doit donc être insérée entre ces deux cellules.
 
-![insertion dans une skip list](https://forge.univ-lyon1.fr/api/v4/projects/23096/jobs/artifacts/master/raw/images/insertion_triee.pdf?job=tikz-build)
+![insertion dans une skip list](images/insertion_triee.png)
+
+Sur l'image ci-dessus, pour insérer la cellule 9, il faut placer un curseur sur
+la cellule sentinelle (avec la valeur X), puis avancer ce curseur jusqu'à la
+cellule 8. La cellule 8 est la bonne cellule car sa suivante a la valeur 10 qui
+est plus grande que 9. Une fois le curseur sur 8, la nouvelle cellule 9 peut
+prendre pour suivante 10, et 8 prend pour suivante 9.
 
 #### Objectf
 
@@ -67,5 +75,26 @@ insertion est le suivant :
 ```
   - positionner un curseur sur la cellule sentinelle
   - tant que la cellule suivant le curseur existe et a une valeur plus petite
-  |_ - avancer le curseur sur sa cellule suivante
+  | - avancer le curseur sur sa cellule suivante
   - insérer la nouvelle cellule entre le curseur et sa suivante
+```
+
+### Recherche
+
+#### Principe
+
+La recherche fonctionne sur le même principe que l'insertion : on initialise un
+curseur sur la sentinelle, et on avance tant que la suivante est plus petite ou
+égale à la valeur cherchée. À la sortie, il y a trois possibilités :
+
+  * le curseur est la sentinelle : pas trouvé ;
+  * le curseur est sur une cellule de la bonne valeur : trouvé ;
+  * sinon : pas trouvé.
+
+#### Objectif
+
+Modifiez la fonction de recherche pour qu'elle fonctionne. Modifiez ensuite le
+main dans le fichier `test_skipliste` pour vérifier que votre recherche
+fonctionne.
+
+## Ajouter un etage
