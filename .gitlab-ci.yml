@@ -25,7 +25,9 @@ skiplist-test:
 
 tikz-build:
   stage: build
-  image: aergus/latex
+  image: 
+    name: aergus/latex
+    entrypoint: [ '/bin/sh', '-c' ]
   script:
     - cd images
     - find . -type f -name "*.tex" -exec latexmk -pdf {} \;
