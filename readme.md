@@ -56,7 +56,7 @@ façon d'insérer est d'avancer dans la liste jusqu'à trouver une cellule dont 
 valeur est plus petite que la valeur insérée, et donc la suivante a une valeur
 plus grande. La nouvelle cellule doit donc être insérée entre ces deux cellules.
 
-![insertion dans une skip list](https://forge.univ-lyon1.fr/lifap6/tp-skiplist-etu/-/jobs/artifacts/master/raw/images/insertion_triee.pdf?job=tikz-build)
+![insertion dans une skip list](https://forge.univ-lyon1.fr/api/v4/projects/23096/jobs/artifacts/master/raw/images/insertion_triee.pdf?job=tikz-build)
 
 #### Objectf
 
