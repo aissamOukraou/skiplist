@@ -16,7 +16,7 @@ skiplist-test:
     - skiplist-build
 
 tikz-build:
-  stage: image-build
+  stage: build
   image: texlive/texlive
   script:
     - cd images
