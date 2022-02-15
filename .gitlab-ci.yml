@@ -15,3 +15,12 @@ skiplist-test:
   dependencies:
     - skiplist-build
 
+tikz-build:
+  stage: image-build
+  image: texlive/texlive
+  script:
+    - cd images
+    - find . -type f -name "*.tex" -exec latexmk -pdf {} \;
+  artifacts:
+    paths:
+      - "images/*.pdf"
