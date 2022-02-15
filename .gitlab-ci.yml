@@ -1,0 +1,17 @@
+skiplist-build:
+  stage: build
+  image: gcc
+  script:
+    - cd src
+    - make test_skipliste
+  artifacts:
+    paths:
+      - src/test_skipliste
+
+skiplist-test:
+  stage: test
+  script:
+    - src/test_skipliste
+  dependencies:
+    - skiplist-build
+
