@@ -1,5 +1,7 @@
 # Lifap6 — Skip Listes
 
+[![pipeline status](https://forge.univ-lyon1.fr/lifap6/tp-skiplist-etu/badges/master/pipeline.svg)](https://forge.univ-lyon1.fr/lifap6/tp-skiplist-etu/commits/master)
+
 Ce TP a pour but de vous faire programmer une skip liste. Les skip listes sont
 une évolution des listes chaînées pour permettre d'implémenter le type abstrait
 *Collection triée*.  Une collection triée est uns structure de données
@@ -54,9 +56,16 @@ façon d'insérer est d'avancer dans la liste jusqu'à trouver une cellule dont 
 valeur est plus petite que la valeur insérée, et donc la suivante a une valeur
 plus grande. La nouvelle cellule doit donc être insérée entre ces deux cellules.
 
-<!-- TODO image -->
+![insertion dans une skip list](https://forge.univ-lyon1.fr/lifap6/tp-skiplist-etu/-/jobs/artifacts/master/raw/images/insertion_triee.pdf?job=tikz-build)
 
 #### Objectf
 
 Modifiez la fonction d'insertion pour vous assurer que les valeurs sont insérées
-à la bonne position dans la skip liste. L'algorithme
+à la bonne position dans la skip liste. L'algorithme pour réaliser cette
+insertion est le suivant :
+
+```
+  - positionner un curseur sur la cellule sentinelle
+  - tant que la cellule suivant le curseur existe et a une valeur plus petite
+  |_ - avancer le curseur sur sa cellule suivante
+  - insérer la nouvelle cellule entre le curseur et sa suivante

@@ -24,11 +24,11 @@ void SkipListe::inserer(int v) {
    * sur la celule plus grande ou la fin de la liste, il faut inserer apres le
    * curseur (un peu comme au dessus pour inserer apres la sentinelle).
    *
-   * courante <- sentinelle
-   * Tant que ( courante->suivante n'est pas la fin de la liste et a une valeur plus petite que v ) {
-   *    avancer courante sur sa suivante
+   * initialiser un curseur sur la sentinelle
+   * Tant que le curseur a une cellule suivante et que sa valeur est plus petite que v {
+   *    avancer le curseur sur sa suivante
    * }
-   * inserer apres courante
+   * inserer apres le curseur
    *
    * */
 }
@@ -42,12 +42,12 @@ SkipCellule* chercher(int v) {
    * on a trouve, si on arrive sur la fin de la liste ou une valeur plus grande,
    * on ne trouvera pas plus loin car la liste est (devrait etre) triee.
    *
-   * courante <- sentinelle
-   * Tant que (courante->suivante n'est pas la fin de la liste et a une valeur plus petite que v ) {
-   *   avancer courante sur sa suivante
+   * initialiser un curseur sur la sentinelle
+   * Tant que le curseut a uns cellule suivante et que sa valeur est plus petite que v {
+   *   avancer le curseur sur sa suivante
    * }
-   * Si courante n'est pas la sentinelle et a la valeur v
-   *   la retourner
+   * Si le curseur n'est pas la sentinelle et a la valeur v
+   *   le retourner
    * Sinon
    *   retourner nullptr
    *
