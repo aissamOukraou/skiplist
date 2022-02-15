@@ -17,7 +17,7 @@ skiplist-test:
 
 tikz-build:
   stage: build
-  image: texlive/texlive
+  image: aergus/latex
   script:
     - cd images
     - find . -type f -name "*.tex" -exec latexmk -pdf {} \;
