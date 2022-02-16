@@ -340,7 +340,7 @@ selon le résultat. Nous obtenons alors l'algorithme suivant
 ```
 -->
 
-![insertion multiniveaux](images/insertion_niveaux_automatiques.png)
+![algo insertion niveaux automatiques](images/algo_niveaux_automatiques.png)
 
 ### Travail
 
