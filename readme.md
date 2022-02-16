@@ -15,6 +15,8 @@ Pour pouvoir réaliser ces opérations, il est nécessaire que les éléments in
 dans la skip liste puissent être ordonnés. Nous utiliserons des entiers dans le
 cadre de ce TP.
 
+[[_TOC_]]
+
 ## Code de base
 
 Vous trouverez dans le dossier `src` un code de base non fonctionnel pour les
