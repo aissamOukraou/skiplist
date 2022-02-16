@@ -236,3 +236,43 @@ fois le niveau 1 créé, certaines cellules insérées apparaissent au niveau 1,
 mais pas toutes (une sur deux en moyenne).
 
 # Niveaux multiples
+
+## Utiliser plusieurs fois l'ajout de niveau
+
+Ajouter un niveau permet de doubler la vitesse de la recherche car le niveau 1 a
+en moyenne deux fois moins de cellules que le niveau 0. Pour doubler une fois de
+plus la vitesse il est possible de rajouter un niveau 2. Et pour doubler à
+nouveau la vitesse, il est possible d'ajouter un niveau 3, et ainsi de suite,
+jusqu'à ce qu'un niveau ne contienne plus aucun élément.
+
+### Principe
+
+En ajoutant plus de niveau, il va falloir modifier la recherche pour pouvoir
+prendre en compte tous les niveaux créés. Il suffit de rajouter des boucles
+supplémentaires sur les niveau supérieurs. Au lieu de créer des variables à la
+main, nous allons désormais réaliser une boucle sur les niveaux, avec une
+variable indiquant sur quel niveau nous circulons. L'algorithme d'insertion
+devient donc
+
+```
+  - niveau courant est initialisé au niveau maximal de la skip liste
+  - créer un tableau precedentes aussi grand que le nombre de niveaux
+  - créer un curseur initialisé sur la cellule sentinelle
+  - Tant que le niveau courant est positif ou nul
+  | - Tant que la cellule suivant le curseur au niveau courant existe et a une valeur plus petite
+  | | - avancer le curseur sur sa cellule suivante au niveau courant
+  | - sauvegarder le curseur dans le tableau de precedentes au niveau courant
+  | - diminuer le niveau courant
+  - mettre à 0 le niveau courant
+  - Tant que le niveau courant est plus petit que le niveau maximal
+  | - Si la nouvelle cellule est sélectionnée pour le niveau courant
+  | | - insérer la nouvelle cellule entre la precedente du niveau courant et sa suivante au niveau courant
+  | - Sinon
+  | | - sortir de la fonction
+```
+
+Notez qu'une cellule doit **toujours** être insérée sur le niveau 0. Le pile ou
+face n'est à faire que pour les niveaux supérieurs. Vous pouvez voir ci dessous
+le contenu du tableau de précédentes et les chaînages à réaliser.
+
+![insertion multiniveaux](images.insertion_multiniveaux.png)

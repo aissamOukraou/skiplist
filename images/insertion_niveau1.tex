@@ -19,16 +19,16 @@
 
   \draw[draw = none] (new+ptr+0) -| coordinate (new+to+0) (new.south west) ;
   \draw[draw=black, dashed, -latex, rounded corners]
-    (n2+ptr+0) |- (new+to+0)
+    (n2+ptr+0) -- ++ (0.3, 0) |- (new+to+0)
   ;
-  \draw[draw=black, dashed, -latex, rounded corners]
+  \draw[draw=black, dashed, -latex, rounded corners, shorten > = 2mm]
     (new+ptr+0) -| (n3)
   ;
   \draw[fill=black, draw = none] (new+ptr+0) circle[radius=2pt] ;
 
   \draw[draw = none] (new+ptr+1) -| coordinate (new+to+1) (new.south west) ;
   \draw[draw=black, dashed, -latex, rounded corners]
-    (n1+ptr+1) |- (new+to+1)
+    (n1+ptr+1) -- ++ (0.3, 0) |- (new+to+1)
   ;
   \draw[draw=black, dashed, -latex, rounded corners]
     (new+ptr+1) -| (n4)
