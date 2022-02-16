@@ -3,6 +3,8 @@
 
 #include "skip_cellule.hpp"
 
+#include <random>
+
 class SkipListe {
   public :
 
@@ -30,6 +32,11 @@ class SkipListe {
 
     /* la sentinelle servira a stocker les tetes de chaque niveau */
     SkipCellule* m_sentinelle ;
+
+    /* generateur de nombres aleatoires pour les pile ou face */
+    std::default_random_engine m_random ;
+    std::bernoulli_distribution m_piece ;
+    bool pile_ou_face() ;
 } ;
 
 #endif

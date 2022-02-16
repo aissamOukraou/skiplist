@@ -78,3 +78,8 @@ void SkipListe::afficher() {
   }
   std::cout << "]" << std::endl ;
 }
+
+bool SkipListe::pile_ou_face() {
+  //lancer la piece
+  return m_piece(m_random) ;
+}
