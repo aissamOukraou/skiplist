@@ -57,12 +57,15 @@ valeur est plus petite que la valeur insérée, et dont la suivante a une valeur
 plus grande. La nouvelle cellule doit donc être insérée entre ces deux cellules.
 L'algorithme pour réaliser cette insertion est donc le suivant :
 
+<!--
 ```
   - positionner un curseur sur la cellule sentinelle
   - Tant que la cellule suivant le curseur existe et a une valeur plus petite
   | - avancer le curseur sur sa cellule suivante
   - insérer la nouvelle cellule entre le curseur et sa suivante
 ```
+-->
+![algo insertion dans une skip list](images/algo_insertion_triee.png)
 
 ![insertion dans une skip list](images/insertion_triee.png)
 
@@ -124,6 +127,7 @@ cellules sélectionnées à la suite. Il est donc initialisé sur la cellule
 sentinelle, et avancera à chaque cellule sélectionnée. L'algorithme est donc le
 suivant :
 
+<!--
 ```
 - ajouter une suivante nullptr à la cellule sentinelle
 - initialiser la cellule courante sur la suivante de la sentinelle au niveau 0
@@ -136,6 +140,10 @@ suivant :
 | | - la précédente devient la courante
 | - la courante avance sur sa suivante
 ```
+-->
+
+![algo ajout niveau skip liste](images/algo_ajout_niveau.png)
+
 
 Le fonctionnement de cet algorithme est illustré ci-dessous. En dessous de
 chaque cellule, il est indiqué si elle est sélectionnée ou non. Lorsque la
@@ -170,6 +178,7 @@ consiste à avancer d'abord sur le niveau 1 autant que possible, puis finir sur
 le niveau 0. Le niveau 1 comportant en moyenne deux fois moins d'éléments, on
 avance dessus deux fois plus vite. Pour l'insertion, l'algorithme devient donc
 
+<!--
 ```
   - positionner un curseur sur la cellule sentinelle
   - Si le niveau 1 existe
@@ -179,6 +188,8 @@ avance dessus deux fois plus vite. Pour l'insertion, l'algorithme devient donc
   | - avancer le curseur sur sa cellule suivante au niveau 0
   - insérer la nouvelle cellule entre le curseur et sa suivante au niveau 0
 ```
+-->
+![algo recherche rapide](images/algo_recherche_rapide.png)
 
 Notez ici que le curseur n'est **pas** réinitialisé entre les deux boucles. La
 boucle sur le niveau 0 n'aura donc plus beaucoup de chemin à faire. Notez
@@ -210,6 +221,7 @@ niveau 1, il faut donc se souvenir de la cellule précédente au niveau 1. Il
 s'agit de celle obtenue à l'issue de la boucle sur le niveau 1, avant de
 réaliser la boucle sur le niveau 0. L'insertion devient alors :
 
+<!--
 ```
   - créer un curseur 1 positionné sur la cellule sentinelle
   - Si le niveau 1 existe
@@ -222,6 +234,8 @@ réaliser la boucle sur le niveau 0. L'insertion devient alors :
   - Si le niveau 1 existe et la nouvelle cellule est sélectionnée pour le niveau 1
   | - insérer la nouvelle cellule entre le curseur 1 et sa suivante au niveau 1
 ```
+-->
+![algo insertion niveau 1](images/algo_insertion_niveau1.png)
 
 ![insertion niveau 1](images/insertion_niveau1.png)
 
@@ -252,6 +266,7 @@ main, nous allons désormais réaliser une boucle sur les niveaux, avec une
 variable indiquant sur quel niveau nous circulons. L'algorithme d'insertion
 devient donc
 
+<!--
 ```
   - niveau courant est initialisé au niveau maximal de la skip liste
   - créer un tableau precedentes aussi grand que le nombre de niveaux
@@ -268,6 +283,8 @@ devient donc
   | - Sinon
   | | - sortir de la fonction
 ```
+-->
+![algo insertion multiniveaux](images/algo_insertion_multiniveaux.png)
 
 Notez qu'une cellule doit **toujours** être insérée sur le niveau 0. Le pile ou
 face n'est à faire que pour les niveaux supérieurs. Vous pouvez voir ci dessous
@@ -301,6 +318,7 @@ chaînage au niveaux existants. Après avoir chaîné sur les niveaux existants,
 peut continuer à faire des pile ou face et créer des niveaux supplémentaires
 selon le résultat. Nous obtenons alors l'algorithme suivant
 
+<!--
 ```
   - niveau courant est initialisé au niveau maximal de la skip liste
   - créer un tableau precedentes aussi grand que le nombre de niveaux
@@ -320,6 +338,9 @@ selon le résultat. Nous obtenons alors l'algorithme suivant
   | - ajouter un niveau à la cellule sentinelle et à la nouvelle cellule
   | - la suivante de la sentinelle sur ce niveau devient la nouvelle cellule
 ```
+-->
+
+![insertion multiniveaux](images/insertion_niveaux_automatiques.png)
 
 ### Travail
 
