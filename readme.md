@@ -332,6 +332,7 @@ selon le résultat. Nous obtenons alors l'algorithme suivant
   - Tant que le niveau courant est plus petit que le niveau maximal
   | - Si la nouvelle cellule est sélectionnée pour le niveau courant
   | | - insérer la nouvelle cellule entre la precedente du niveau courant et sa suivante au niveau courant
+    | - augmenter le niveau courant
   | - Sinon
   | | - sortir de la fonction
   - Tant que la nouvelle cellule est sélectionnée pour un niveau supérieur

@@ -1,4 +1,4 @@
-\documentclass[varwidth = 17cm]{standalone}
+\documentclass[varwidth = 18cm]{standalone}
 \usepackage{ucblalgo}
 
 \begin{document}
@@ -23,7 +23,8 @@
     mettre à 0 le niveau courant \;
     \Tq{le niveau courant est plus petit que le niveau maximal}{
       \uSi{la nouvelle cellule est sélectionnée pour le niveau courant}{
-        insérer la nouvelle cellule entre la précédente du niveau courant et sa suivante au niveau courant
+        insérer la nouvelle cellule entre la précédente du niveau courant et sa suivante au niveau courant \;
+        augmenter le niveau courant \;
       }
       \Sinon{
         sortir de la fonction
