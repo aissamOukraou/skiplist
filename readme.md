@@ -225,6 +225,9 @@ réaliser la boucle sur le niveau 0. L'insertion devient alors :
   | - insérer la nouvelle cellule entre le curseur 1 et sa suivante au niveau 1
 ```
 
+![insertion niveau 1](images/insertion_niveau1.png)
+
+
 ### Objectif
 
 Modifiez la fonction d'insertion pour permettre aux nouvelles cellules d'arriver

@@ -17,8 +17,9 @@
 
   \slnode[above = of insertpos]{new}{9}{1}
 
+  \draw[draw = none] (new+ptr+0) -| coordinate (new+to+0) (new.south west) ;
   \draw[draw=black, dashed, -latex, rounded corners]
-    (n2+ptr+0) |- (new)
+    (n2+ptr+0) |- (new+to+0)
   ;
   \draw[draw=black, dashed, -latex, rounded corners]
     (new+ptr+0) -| (n3)
