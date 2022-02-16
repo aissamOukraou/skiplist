@@ -35,6 +35,7 @@ tikz-build:
     changes:
       - ".gitlab-ci.yml"
       - "images/*.tex"
+      - "images/*.sty"
   artifacts:
     paths:
       - "images/*.pdf"
