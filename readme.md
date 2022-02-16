@@ -1,5 +1,3 @@
-# Lifap6 — Skip Listes
-
 [![pipeline status](https://forge.univ-lyon1.fr/lifap6/tp-skiplist-etu/badges/master/pipeline.svg)](https://forge.univ-lyon1.fr/lifap6/tp-skiplist-etu/commits/master)
 
 Ce TP a pour but de vous faire programmer une skip liste. Les skip listes sont
@@ -17,7 +15,7 @@ cadre de ce TP.
 
 [[_TOC_]]
 
-## Code de base
+# Code de base
 
 Vous trouverez dans le dossier `src` un code de base non fonctionnel pour les
 skip-listes :
@@ -42,14 +40,14 @@ gérer des cas particuliers lorsqu'on travaille en tête de liste. Si cette
 cellule vous perturbe, dites vous que la tête de la liste est la suivante de la
 sentinelle.
 
-## Liste triée
+# Liste triée
 
 Nous allons pour l'instant assurer le côté *trié* de la collection en faisant en
 sorte que les valeurs stockées dans la skip liste soient toujours triées.
 
-### Insertion
+## Insertion
 
-#### Principe
+### Principe
 
 Dans une skip liste, on ne peut pas choisir d'ajouter en tête ou en queue de
 liste. Les valeurs sont triées dans la liste. Ainsi l'endroit où vient s'insérer
@@ -76,14 +74,14 @@ cellule 8. La cellule 8 est la bonne cellule car sa suivante a la valeur 10 qui
 est plus grande que 9. Une fois le curseur sur 8, la nouvelle cellule 9 peut
 prendre pour suivante 10, et 8 prend pour suivante 9.
 
-#### Objectf
+### Objectf
 
 Modifiez la fonction d'insertion pour vous assurer que les valeurs sont insérées
 à la bonne position dans la skip liste.
 
-### Recherche
+## Recherche
 
-#### Principe
+### Principe
 
 La recherche fonctionne sur le même principe que l'insertion : on initialise un
 curseur sur la sentinelle, et on avance tant que la suivante est plus petite ou
@@ -93,13 +91,13 @@ curseur sur la sentinelle, et on avance tant que la suivante est plus petite ou
   * le curseur est sur une cellule de la bonne valeur : trouvé ;
   * sinon : pas trouvé.
 
-#### Objectif
+### Objectif
 
 Modifiez la fonction de recherche pour qu'elle fonctionne. Modifiez ensuite le
 main dans le fichier `test_skipliste` pour vérifier que votre recherche
 fonctionne.
 
-## Ajouter un etage pour accélérer
+# Ajouter un etage pour accélérer
 
 Le principe des skip listes est d'accélérer la recherche du point d'insertion ou
 d'un élément. Pour ce faire, on ajoute des niveaux permettant d'avancer plus
@@ -107,14 +105,14 @@ vite sur la liste. Attention cependant, les niveaux n'ont pas tous les élément
 donc il faudra nécessairement redescendre au niveau 0 à la fin pour s'assurer que
 l'insertion se fait au bon endroit, ou que la recherche est terminée.
 
-### Création d'un niveau
+## Création d'un niveau
 
 Pour créer un niveau, il faut parcourir la liste et déterminer pour chaque
 cellule si elle est sélectionnée ou non pour le nouveau niveau. Les cellules
 sélectionnées gagnent une nouvelle suivante, et sont chaînées entre elles. Pour
 sélectionner les cellules, nous utiliserons la fonction `pile_ou_face` fournie.
 
-#### Principe
+### Principe
 
 Pour ajouter un niveau, il faut commencer par ajouter une suivante à la cellule
 sentinelle. Tant qu'il n'y a pas de cellules sélectionnées, le niveau est vide,
@@ -150,7 +148,7 @@ l'état avant de faire avancer la précédente sur la courante.
 ![ajout niveau skip liste](images/ajout_niveau.png)
 
 
-#### Objectif
+### Objectif
 
 Ajoutez une méthode `void ajouter_niveau()` à la classe `SkipListe` pour ajouter
 un niveau, et implémentez l'algorithme ci-dessus pour ajouter un niveau. Pour
@@ -159,5 +157,39 @@ ajouter une nouvelle suivante à une cellule, il suffit d'ajouter la méthode
 tableau dynamique. 
 
 Modifiez ensuite la fonction d'affichage pour afficher le niveau ajouté en plus
-di niveau initial. Il suffit pour cela de reprendre le code actuel et de le
+du niveau initial. Il suffit pour cela de reprendre le code actuel et de le
 dupliquer en utilisant `suivante[1]` au lieu de `suivante[0]`.
+
+## Accélération de la recherche et de l'insertion
+
+Il est désormais possible d'acclérer la recherche et l'insertion en utilisant ce
+niveau supplémentaire. 
+
+### Principe
+
+Pour trouver plus rapidement un élément, ou la position d'insertion, le principe
+consiste à avancer d'abord sur le niveau 1 autant que possible, puis finir sur
+le niveau 0. Le niveau 1 comportant en moyenne deux fois moins d'éléments, on
+avance dessus deux fois plus vite. Pour l'insertion, l'algorithme devient donc
+
+```
+  - positionner un curseur sur la cellule sentinelle
+  - tant que la cellule suivant le curseur au niveau 1 existe et a une valeur plus petite
+  | - avancer le curseur sur sa cellule suivante au niveau 1
+  - tant que la cellule suivant le curseur au niveau 0 existe et a une valeur plus petite
+  | - avancer le curseur sur sa cellule suivante au niveau 0
+  - insérer la nouvelle cellule entre le curseur et sa suivante au niveau 0
+```
+
+notez ici que le curseur n'est **pas** réinitialisé entre les deux boucles. La
+boucle sur le niveau 0 n'aura donc plus beaucoup de chemin à faire. Notez
+également que pour le moment, les nouvelles cellules ne sont insérées qu'au
+niveau 0, on ne les ajoute pas au niveau 1.
+
+![recherche rapide](images/recherche_rapide.png)
+
+### Objectif
+
+Modifiez les fonctions insertion et recherche pour prendre en compte le niveau
+que vous avez ajouté. Modifiez ensuite la fonction de test pour vous assurer que
+des cellules de niveau 0 et des cellules de niveau 1 sont bien trouvées.
