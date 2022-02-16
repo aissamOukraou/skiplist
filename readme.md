@@ -219,7 +219,7 @@ réaliser la boucle sur le niveau 0. L'insertion devient alors :
   - Tant que la cellule suivant le curseur au niveau 0 existe et a une valeur plus petite
   | - avancer le curseur sur sa cellule suivante au niveau 0
   - insérer la nouvelle cellule entre le curseur 0 et sa suivante au niveau 0
-  - Si le niveau 2 existe et la nouvelle cellule est sélectionnée pour le niveau 1
+  - Si le niveau 1 existe et la nouvelle cellule est sélectionnée pour le niveau 1
   | - insérer la nouvelle cellule entre le curseur 1 et sa suivante au niveau 1
 ```
 
