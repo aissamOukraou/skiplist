@@ -91,7 +91,7 @@ curseur sur la sentinelle, et on avance tant que la suivante est plus petite ou
   * le curseur est sur une cellule de la bonne valeur : trouvé ;
   * sinon : pas trouvé.
 
-### Objectif
+### Travail
 
 Modifiez la fonction de recherche pour qu'elle fonctionne. Modifiez ensuite le
 main dans le fichier `test_skipliste` pour vérifier que votre recherche
@@ -148,7 +148,7 @@ l'état avant de faire avancer la précédente sur la courante.
 ![ajout niveau skip liste](images/ajout_niveau.png)
 
 
-### Objectif
+### Travail
 
 Ajoutez une méthode `void ajouter_niveau()` à la classe `SkipListe` pour ajouter
 un niveau, et implémentez l'algorithme ci-dessus pour ajouter un niveau. Pour
@@ -189,7 +189,7 @@ niveau 0, on ne les ajoute pas au niveau 1.
 
 ![recherche rapide](images/recherche_rapide.png)
 
-### Objectif
+### Travail
 
 Modifiez les fonctions insertion et recherche pour prendre en compte le niveau
 que vous avez ajouté s'il existe. Pour savoir si le niveau 1 est créé, vous
@@ -228,7 +228,7 @@ réaliser la boucle sur le niveau 0. L'insertion devient alors :
 ![insertion niveau 1](images/insertion_niveau1.png)
 
 
-### Objectif
+### Travail
 
 Modifiez la fonction d'insertion pour permettre aux nouvelles cellules d'arriver
 au niveau 1. Modifiez également la fonction de test pour vous assurer qu'une
@@ -275,4 +275,67 @@ Notez qu'une cellule doit **toujours** être insérée sur le niveau 0. Le pile 
 face n'est à faire que pour les niveaux supérieurs. Vous pouvez voir ci dessous
 le contenu du tableau de précédentes et les chaînages à réaliser.
 
-![insertion multiniveaux](images.insertion_multiniveaux.png)
+![insertion multiniveaux](images/insertion_multiniveaux.png)
+
+### Travail
+
+Modifiez une nouvelle fois la fonction d'insertion pour tenir compte de tous les
+niveaux créés en implémentant l'algorithme ci-dessus. Modifiez également
+l'affichage pour afficher tous les niveaux de la skip liste.  Modifiez enfin la
+fonction de test pour vous assurer que désormais, lorsque vous insérez des
+valeurs, elles peuvent apparaître sur plusieurs niveaux. Modifiez enfin la
+fonction recherche pour qu'elle puisse également bénéficier de tous les niveaux,
+en utilisant un algorithme similaire à celui de l'insertion.
+
+## Niveaux automatiques
+
+Une skip list en réalité ne requiert pas de créer manuellement les niveaux. le
+principe est que lorsque les éléments sont insérés, si un élément atteint le
+niveau maximal actuel, et qu'un pile ou face supplémentaire le sélectionne pour
+monter sur un niveau supérieur, alors ce niveau est créé. Ainsi, avec une skip
+liste initiale uniquement munie du niveau 0, le niveau augmentera
+progressivement au fur et à mesure des insertions.
+
+### Principe
+
+Pour obtenir ce comportement, il suffit de ne pas se restreindre au moment du
+chaînage au niveaux existants. Après avoir chaîné sur les niveaux existants, on
+peut continuer à faire des pile ou face et créer des niveaux supplémentaires
+selon le résultat. Nous obtenons alors l'algorithme suivant
+
+```
+  - niveau courant est initialisé au niveau maximal de la skip liste
+  - créer un tableau precedentes aussi grand que le nombre de niveaux
+  - créer un curseur initialisé sur la cellule sentinelle
+  - Tant que le niveau courant est positif ou nul
+  | - Tant que la cellule suivant le curseur au niveau courant existe et a une valeur plus petite
+  | | - avancer le curseur sur sa cellule suivante au niveau courant
+  | - sauvegarder le curseur dans le tableau de precedentes au niveau courant
+  | - diminuer le niveau courant
+  - mettre à 0 le niveau courant
+  - Tant que le niveau courant est plus petit que le niveau maximal
+  | - Si la nouvelle cellule est sélectionnée pour le niveau courant
+  | | - insérer la nouvelle cellule entre la precedente du niveau courant et sa suivante au niveau courant
+  | - Sinon
+  | | - sortir de la fonction
+  - Tant que la nouvelle cellule est sélectionnée pour un niveau supérieur
+  | - ajouter un niveau à la cellule sentinelle et à la nouvelle cellule
+  | - la suivante de la sentinelle sur ce niveau devient la nouvelle cellule
+```
+
+### Travail
+
+Modifiez votre fonction d'insertion pour ajouter ce comportement dynamique.
+Supprimez de votre code les appels à la méthode de création de niveau, et
+modifiez la fonction de test pour pouvoir observer l'augmentation automatique
+des niveaux de la skip liste.
+
+# Conclusion
+
+Félicitations, vos skip listes sont fonctionnelles. Pour aller plus loin, vous
+pouvez ajouter la construction par copie et l'opérateur d'affectation. Si vous
+voulez *vraiment* aller plus loin, sachez que les skip listes sont notablement
+appréciées pour le fait que les insertions et les recherches puissent être
+réalisées en parallèle sans nécessiter de verrous sur la structure. Vous pouvez
+donc vous documenter sur le sujet, et essayer de mettre en place une skip liste
+avec des accès parallèles.
