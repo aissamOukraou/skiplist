@@ -127,9 +127,9 @@ suivant :
 ```
 - ajouter une suivante nullptr à la cellule sentinelle
 - initialiser la cellule courante sur la suivante de la sentinelle au niveau 0
-- initialiser la precedente sur la cellule sentinelle
+- initialiser la précédente sur la cellule sentinelle
 - Tant que la courante n'a pas atteint la fin de la liste
-| - tirer a pile ou face si la courante est sélectionnée
+| - tirer à pile ou face si la courante est sélectionnée
 | - Si elle est sélectionnée
 | | - ajouter une suivante nullptr à la courante
 | | - la suivante au niveau 1 de la précédente devient la courante
@@ -139,7 +139,7 @@ suivant :
 
 Le fonctionnement de cet algorithme est illustré ci-dessous. En dessous de
 chaque cellule, il est indiqué si elle est sélectionnée ou non. Lorsque la
-cellule n'est pas sélectionnée, l'image affiche l'étant avant de faire avancer
+cellule n'est pas sélectionnée, l'image affiche l'état avant de faire avancer
 la courante sur sa suivante. Si la cellule est sélectionnée, l'image affiche
 l'état avant de faire avancer la précédente sur la courante.
 
@@ -180,7 +180,7 @@ avance dessus deux fois plus vite. Pour l'insertion, l'algorithme devient donc
   - insérer la nouvelle cellule entre le curseur et sa suivante au niveau 0
 ```
 
-notez ici que le curseur n'est **pas** réinitialisé entre les deux boucles. La
+Notez ici que le curseur n'est **pas** réinitialisé entre les deux boucles. La
 boucle sur le niveau 0 n'aura donc plus beaucoup de chemin à faire. Notez
 également que pour le moment, les nouvelles cellules ne sont insérées qu'au
 niveau 0, on ne les ajoute pas au niveau 1.
@@ -211,11 +211,11 @@ s'agit de celle obtenue à l'issue de la boucle sur le niveau 1, avant de
 réaliser la boucle sur le niveau 0. L'insertion devient alors :
 
 ```
-  - creer un curseur 1 positionné sur la cellule sentinelle
-  - Si le nivea 1 existe
+  - créer un curseur 1 positionné sur la cellule sentinelle
+  - Si le niveau 1 existe
   | - Tant que la cellule suivant le curseur au niveau 1 existe et a une valeur plus petite
   | | - avancer le curseur sur sa cellule suivante au niveau 1
-  - creer un curseur 0 positionné sur la même cellule que le curseur 1
+  - créer un curseur 0 positionné sur la même cellule que le curseur 1
   - Tant que la cellule suivant le curseur au niveau 0 existe et a une valeur plus petite
   | - avancer le curseur sur sa cellule suivante au niveau 0
   - insérer la nouvelle cellule entre le curseur 0 et sa suivante au niveau 0
