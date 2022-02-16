@@ -127,7 +127,7 @@ suivant :
 ```
 - ajouter une suivante nullptr à la cellule sentinelle
 - initialiser la cellule courante sur la suivante de la sentinelle au niveau 0
-- initialiser la precedente sur la celluls sentinelle
+- initialiser la precedente sur la cellule sentinelle
 - Tant que la courante n'a pas atteint la fin de la liste
 | - tirer a pile ou face si la courante est sélectionnée
 | - Si elle est sélectionnée
