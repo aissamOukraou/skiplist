@@ -1,5 +1,3 @@
-<h1>TP Skip Listes</h1>
-
 Ce TP a pour but de vous faire programmer une skip liste. Les skip listes sont
 une évolution des listes chaînées pour permettre d'implémenter le type abstrait
 *Collection triée*.  Une collection triée est uns structure de données
