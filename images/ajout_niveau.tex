@@ -317,7 +317,7 @@
   \slptr{n4}{1}{n5}
   \slptr[nullptr]{n5}{1}{null}
 
-  \node[above = 8mm of n4] (precedente) {precedente} ;
+  \node[above = 8mm of n5] (precedente) {precedente} ;
   \node[above = 8mm of n6] (courante) {courante} ;
 
   \node[below = 1mm of n0] {\xmark} ;
@@ -328,7 +328,7 @@
   \node[below = 1mm of n5] {\cmark} ;
   \node[below = 1mm of n6] {\xmark} ;
 
-  \draw[-latex] (precedente) -- (n4) ;
+  \draw[-latex] (precedente) -- (n5) ;
   \draw[-latex, shorten > = 2mm] (courante) -- (n6) ;
 \end{tikzpicture}
 
@@ -368,7 +368,7 @@
   \slptr{n4}{1}{n5}
   \slptr[nullptr]{n5}{1}{null}
 
-  \node[above = 8mm of n4] (precedente) {precedente} ;
+  \node[above = 8mm of n5] (precedente) {precedente} ;
   \node[above = 8mm of n7] (courante) {courante} ;
 
   \node[below = 1mm of n0] {\xmark} ;
@@ -380,7 +380,7 @@
   \node[below = 1mm of n6] {\xmark} ;
   \node[below = 1mm of n7] {\xmark} ;
 
-  \draw[-latex] (precedente) -- (n4) ;
+  \draw[-latex] (precedente) -- (n5) ;
   \draw[-latex, shorten > = 2mm] (courante) -- (n7) ;
 \end{tikzpicture}
 
