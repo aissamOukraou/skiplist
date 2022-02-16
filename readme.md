@@ -61,7 +61,7 @@ L'algorithme pour réaliser cette insertion est donc le suivant :
 
 ```
   - positionner un curseur sur la cellule sentinelle
-  - tant que la cellule suivant le curseur existe et a une valeur plus petite
+  - Tant que la cellule suivant le curseur existe et a une valeur plus petite
   | - avancer le curseur sur sa cellule suivante
   - insérer la nouvelle cellule entre le curseur et sa suivante
 ```
@@ -174,9 +174,10 @@ avance dessus deux fois plus vite. Pour l'insertion, l'algorithme devient donc
 
 ```
   - positionner un curseur sur la cellule sentinelle
-  - tant que la cellule suivant le curseur au niveau 1 existe et a une valeur plus petite
-  | - avancer le curseur sur sa cellule suivante au niveau 1
-  - tant que la cellule suivant le curseur au niveau 0 existe et a une valeur plus petite
+  - Si le niveau 1 existe
+  | - Tant que la cellule suivant le curseur au niveau 1 existe et a une valeur plus petite
+  | | - avancer le curseur sur sa cellule suivante au niveau 1
+  - Tant que la cellule suivant le curseur au niveau 0 existe et a une valeur plus petite
   | - avancer le curseur sur sa cellule suivante au niveau 0
   - insérer la nouvelle cellule entre le curseur et sa suivante au niveau 0
 ```
@@ -191,5 +192,44 @@ niveau 0, on ne les ajoute pas au niveau 1.
 ### Objectif
 
 Modifiez les fonctions insertion et recherche pour prendre en compte le niveau
-que vous avez ajouté. Modifiez ensuite la fonction de test pour vous assurer que
-des cellules de niveau 0 et des cellules de niveau 1 sont bien trouvées.
+que vous avez ajouté s'il existe. Pour savoir si le niveau 1 est créé, vous
+pouvez utiliser la méthode `size` de la classe `vector` sur le tableau de
+suivantes de la sentinelle : si le tableau est de taille 2, il y a un niveau 1.
+Modifiez ensuite la fonction de test pour vous assurer que des cellules de
+niveau 0 et des cellules de niveau 1 sont bien trouvées.
+
+## Insertion au niveau 1
+
+Il serait injuste que les nouvelles cellules soient exclues du niveau 1. Nous
+allons donc également leur permettre de faire un pile ou face pour leur
+permettre de s'intégrer au niveau 1.
+
+### Principe
+
+Pour pouvoir ajouter une cellule à un niveau, il est nécessaire de connaître la
+cellule précédente au niveau en question. Pour pouvoir réaliser l'insertion au
+niveau 1, il faut donc se souvenir de la cellule précédente au niveau 1. Il
+s'agit de celle obtenue à l'issue de la boucle sur le niveau 1, avant de
+réaliser la boucle sur le niveau 0. L'insertion devient alors :
+
+```
+  - creer un curseur 1 positionné sur la cellule sentinelle
+  - Si le nivea 1 existe
+  | - Tant que la cellule suivant le curseur au niveau 1 existe et a une valeur plus petite
+  | | - avancer le curseur sur sa cellule suivante au niveau 1
+  - creer un curseur 0 positionné sur la même cellule que le curseur 1
+  - Tant que la cellule suivant le curseur au niveau 0 existe et a une valeur plus petite
+  | - avancer le curseur sur sa cellule suivante au niveau 0
+  - insérer la nouvelle cellule entre le curseur 0 et sa suivante au niveau 0
+  - Si le niveau 2 existe et la nouvelle cellule est sélectionnée pour le niveau 1
+  | - insérer la nouvelle cellule entre le curseur 1 et sa suivante au niveau 1
+```
+
+### Objectif
+
+Modifiez la fonction d'insertion pour permettre aux nouvelles cellules d'arriver
+au niveau 1. Modifiez également la fonction de test pour vous assurer qu'une
+fois le niveau 1 créé, certaines cellules insérées apparaissent au niveau 1,
+mais pas toutes (une sur deux en moyenne).
+
+# Niveaux multiples
