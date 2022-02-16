@@ -33,7 +33,7 @@ void SkipListe::inserer(int v) {
    * */
 }
 
-SkipCellule* chercher(int v) {
+SkipCellule* SkipListe::chercher(int v) {
   /* cette recherche ne fait rien, c'est votre travail de coder cette fonction */
   return nullptr ;
 
