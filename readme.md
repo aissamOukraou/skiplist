@@ -1,4 +1,4 @@
-[![pipeline status](https://forge.univ-lyon1.fr/lifap6/tp-skiplist-etu/badges/master/pipeline.svg)](https://forge.univ-lyon1.fr/lifap6/tp-skiplist-etu/commits/master)
+<h1>TP Skip Listes</h1>
 
 Ce TP a pour but de vous faire programmer une skip liste. Les skip listes sont
 une évolution des listes chaînées pour permettre d'implémenter le type abstrait
@@ -74,7 +74,7 @@ cellule 8. La cellule 8 est la bonne cellule car sa suivante a la valeur 10 qui
 est plus grande que 9. Une fois le curseur sur 8, la nouvelle cellule 9 peut
 prendre pour suivante 10, et 8 prend pour suivante 9.
 
-### Objectf
+### Travail
 
 Modifiez la fonction d'insertion pour vous assurer que les valeurs sont insérées
 à la bonne position dans la skip liste.
