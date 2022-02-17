@@ -66,6 +66,7 @@ L'algorithme pour réaliser cette insertion est donc le suivant :
 ```
 -->
 ![algo insertion dans une skip list](images/algo_insertion_triee.png)
+![algo insertion dans une skip list](-/jobs/artifacts/master/raw/images/insertion_triee.svg?job=tikz-build)
 
 ![insertion dans une skip list](images/insertion_triee.png)
 
