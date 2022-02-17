@@ -1,3 +1,7 @@
+stages:
+  - build
+  - export
+
 tikz-build:
   stage: build
   image: 
@@ -10,7 +14,7 @@ tikz-build:
       - "images/*.pdf"
 
 svg-export:
-  stage: build
+  stage: export
   image: 
     name: danteev/texlive
   script:
@@ -23,9 +27,10 @@ svg-export:
       - "images/*.svg"
 
 png-export:
-  stage: build
+  stage: export
   image: 
     name: dpokidov/imagemagick
+    entrypoint: [ '/bin/bash', '-c', 'ln -snf /bin/bash /bin/sh && /bin/bash -c $0' ]
   script:
     - cd images
     - find . -type f -name "*.pdf" -exec sh -c "convert -density 300 $1 ${1%.*}.png" sh {} \;
