@@ -2,12 +2,12 @@ src-pipeline:
   trigger:
     include: src/.gitlab-ci.yml
   rules:
-    changes:
+    - changes:
       - src/*
 
 tikz-pipeline:
   trigger:
     include: src/.gitlab-ci.yml
   rules:
-    changes:
+    - changes:
       - src/*
