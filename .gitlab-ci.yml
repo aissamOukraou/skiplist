@@ -7,7 +7,7 @@ src-pipeline:
 
 tikz-pipeline:
   trigger:
-    include: src/.gitlab-ci.yml
+    include: images/.gitlab-ci.yml
   rules:
     - changes:
       - src/*
