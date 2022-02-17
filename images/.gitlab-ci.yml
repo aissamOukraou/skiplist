@@ -19,7 +19,7 @@ svg-export:
     name: danteev/texlive
   script:
     - cd images
-    - find . -type f -name "*.pdf" -exec sh -c "inkscape $1 --export-plain-svg=${1%.*}.svg" sh {} \;
+    - find . -type f -name "*.pdf" -exec sh -c 'inkscape "$1" -o "${1%.*}.svg"' sh {} \;
   dependencies:
     - tikz-build
   artifacts:
@@ -33,7 +33,7 @@ png-export:
     entrypoint: [ '/bin/bash', '-c', 'ln -snf /bin/bash /bin/sh && /bin/bash -c $0' ]
   script:
     - cd images
-    - find . -type f -name "*.pdf" -exec sh -c "convert -density 300 $1 ${1%.*}.png" sh {} \;
+    - find . -type f -name "*.pdf" -exec sh -c 'convert -density 300 "$1" "${1%.*}.png"' sh {} \;
   dependencies:
     - tikz-build
   artifacts:
