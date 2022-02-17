@@ -26,11 +26,11 @@ skiplist-test:
 tikz-build:
   stage: build
   image: 
-    name: aergus/latex
-    entrypoint: [ '/bin/bash', '-c', 'ln -snf /bin/bash /bin/sh && /bin/bash -c $0' ]
+    name: danteev/texlive
   script:
     - cd images
     - find . -type f -name "*.tex" -exec latexmk -pdf {} \;
+    - find . -type f -name "*.pdf" -exec sh -c 'inkscape "$1" --output-plain-svg=${1%.*}.svg' sh {} \;
   only:
     changes:
       - ".gitlab-ci.yml"
@@ -39,3 +39,4 @@ tikz-build:
   artifacts:
     paths:
       - "images/*.pdf"
+      - "images/*.svg"
