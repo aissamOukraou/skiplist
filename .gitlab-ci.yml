@@ -10,4 +10,4 @@ tikz-pipeline:
     include: images/.gitlab-ci.yml
   rules:
     - changes:
-      - src/*
+      - images/*
