@@ -1,42 +1,13 @@
-skiplist-build:
-  stage: build
-  image: gcc
-  only:
+src-pipeline:
+  trigger:
+    include: src/.gitlab-ci.yml
+  rules:
     changes:
-      - ".gitlab-ci.yml"
-      - "src/*"
-  script:
-    - cd src
-    - make test_skipliste
-  artifacts:
-    paths:
-      - src/test_skipliste
+      - src/*
 
-skiplist-test:
-  stage: test
-  only:
+tikz-pipeline:
+  trigger:
+    include: src/.gitlab-ci.yml
+  rules:
     changes:
-      - ".gitlab-ci.yml"
-      - "src/*"
-  script:
-    - src/test_skipliste
-  dependencies:
-    - skiplist-build
-
-tikz-build:
-  stage: build
-  image: 
-    name: danteev/texlive
-  script:
-    - cd images
-    - find . -type f -name "*.tex" -exec latexmk -pdf {} \;
-    - find . -type f -name "*.pdf" -exec sh -c 'inkscape "$1" --export-plain-svg=${1%.*}.svg' sh {} \;
-  only:
-    changes:
-      - ".gitlab-ci.yml"
-      - "images/*.tex"
-      - "images/*.sty"
-  artifacts:
-    paths:
-      - "images/*.pdf"
-      - "images/*.svg"
+      - src/*
