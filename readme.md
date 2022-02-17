@@ -65,10 +65,9 @@ L'algorithme pour réaliser cette insertion est donc le suivant :
   - insérer la nouvelle cellule entre le curseur et sa suivante
 ```
 -->
-![algo insertion dans une skip list](images/algo_insertion_triee.png)
-![algo insertion dans une skip list](../-/jobs/artifacts/master/raw/images/insertion_triee.svg?job=tikz-build)
+![algo insertion dans une skip list](../-/jobs/artifacts/master/raw/images/algo_insertion_triee.svg?job=tikz-build)
 
-![insertion dans une skip list](images/insertion_triee.png)
+![insertion dans une skip list](../-/jobs/artifacts/master/raw/images/insertion_triee.svg?job=tikz-build)
 
 Sur l'image ci-dessus, pour insérer la cellule 9, il faut placer un curseur sur
 la cellule sentinelle (avec la valeur X), puis avancer ce curseur jusqu'à la
@@ -143,7 +142,7 @@ suivant :
 ```
 -->
 
-![algo ajout niveau skip liste](images/algo_ajout_niveau.png)
+![algo ajout niveau skip liste](../-/jobs/artifacts/master/raw/images/algo_ajout_niveau.svg?job=tikz-build)
 
 
 Le fonctionnement de cet algorithme est illustré ci-dessous. En dessous de
@@ -152,7 +151,7 @@ cellule n'est pas sélectionnée, l'image affiche l'état avant de faire avancer
 la courante sur sa suivante. Si la cellule est sélectionnée, l'image affiche
 l'état avant de faire avancer la précédente sur la courante.
 
-![ajout niveau skip liste](images/ajout_niveau.png)
+![ajout niveau skip liste](../-/jobs/artifacts/master/raw/images/ajout_niveau.svg?job=tikz-build)
 
 
 ### Travail
@@ -190,14 +189,14 @@ avance dessus deux fois plus vite. Pour l'insertion, l'algorithme devient donc
   - insérer la nouvelle cellule entre le curseur et sa suivante au niveau 0
 ```
 -->
-![algo recherche rapide](images/algo_recherche_rapide.png)
+![algo recherche rapide](../-/jobs/artifacts/master/raw/images/algo_recherche_rapide.svg?job=tikz-build)
 
 Notez ici que le curseur n'est **pas** réinitialisé entre les deux boucles. La
 boucle sur le niveau 0 n'aura donc plus beaucoup de chemin à faire. Notez
 également que pour le moment, les nouvelles cellules ne sont insérées qu'au
 niveau 0, on ne les ajoute pas au niveau 1.
 
-![recherche rapide](images/recherche_rapide.png)
+![recherche rapide](../-/jobs/artifacts/master/raw/images/recherche_rapide.svg?job=tikz-build)
 
 ### Travail
 
@@ -236,9 +235,9 @@ réaliser la boucle sur le niveau 0. L'insertion devient alors :
   | - insérer la nouvelle cellule entre le curseur 1 et sa suivante au niveau 1
 ```
 -->
-![algo insertion niveau 1](images/algo_insertion_niveau1.png)
+![algo insertion niveau 1](../-/jobs/artifacts/master/raw/images/algo_insertion_niveau1.svg?job=tikz-build)
 
-![insertion niveau 1](images/insertion_niveau1.png)
+![insertion niveau 1](../-/jobs/artifacts/master/raw/images/insertion_niveau1.svg?job=tikz-build)
 
 
 ### Travail
@@ -285,13 +284,13 @@ devient donc
   | | - sortir de la fonction
 ```
 -->
-![algo insertion multiniveaux](images/algo_insertion_multiniveaux.png)
+![algo insertion multiniveaux](../-/jobs/artifacts/master/raw/images/algo_insertion_multiniveaux.svg?job=tikz-build)
 
 Notez qu'une cellule doit **toujours** être insérée sur le niveau 0. Le pile ou
 face n'est à faire que pour les niveaux supérieurs. Vous pouvez voir ci dessous
 le contenu du tableau de précédentes et les chaînages à réaliser.
 
-![insertion multiniveaux](images/insertion_multiniveaux.png)
+![insertion multiniveaux](../-/jobs/artifacts/master/raw/images/insertion_multiniveaux.svg?job=tikz-build)
 
 ### Travail
 
@@ -342,7 +341,7 @@ selon le résultat. Nous obtenons alors l'algorithme suivant
 ```
 -->
 
-![algo insertion niveaux automatiques](images/algo_niveaux_automatiques.png)
+![algo insertion niveaux automatiques](../-/jobs/artifacts/master/raw/images/algo_niveaux_automatiques.svg?job=tikz-build)
 
 ### Travail
 
