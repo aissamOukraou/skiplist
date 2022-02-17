@@ -1,10 +1,6 @@
 skiplist-build:
   stage: build
   image: gcc
-  only:
-    changes:
-      - ".gitlab-ci.yml"
-      - "src/*"
   script:
     - cd src
     - make test_skipliste
@@ -14,10 +10,6 @@ skiplist-build:
 
 skiplist-test:
   stage: test
-  only:
-    changes:
-      - ".gitlab-ci.yml"
-      - "src/*"
   script:
     - src/test_skipliste
   dependencies:

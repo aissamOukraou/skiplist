@@ -6,11 +6,6 @@ tikz-build:
     - cd images
     - find . -type f -name "*.tex" -exec latexmk -pdf {} \;
     - find . -type f -name "*.pdf" -exec sh -c 'inkscape "$1" --export-plain-svg=${1%.*}.svg' sh {} \;
-  only:
-    changes:
-      - ".gitlab-ci.yml"
-      - "images/*.tex"
-      - "images/*.sty"
   artifacts:
     paths:
       - "images/*.pdf"
