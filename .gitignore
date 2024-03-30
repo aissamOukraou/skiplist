@@ -2,3 +2,4 @@ src/* .o
 src/.gitlab-ci.yml
 .gitlab
 readme.md
+git.txt

@@ -21,16 +21,13 @@ void SkipListe::inserer(int v) {
       m_sentinelle->suivante[0]=nlle;
 
   }
-  /* cette insertion n'est pas triee, c'est votre travail de le faire */
-  //nlle->suivante[0] = m_sentinelle->suivante[0] ;
-
-  //m_sentinelle->suivante[0] = nlle ;
+  
   else 
   {
     if(v < m_sentinelle->suivante[0]->valeur )
     {
       SkipCellule* nouveauElement= new SkipCellule(v);
-      
+
       nouveauElement->suivante[0]=m_sentinelle->suivante[0];
       m_sentinelle->suivante[0]=nouveauElement;
     }
