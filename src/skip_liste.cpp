@@ -1,4 +1,4 @@
-#include "skip_liste.hpp"
+ #include "skip_liste.hpp"
 
 #include <iostream>
 
@@ -13,11 +13,46 @@ SkipListe::~SkipListe() {
 }
 
 void SkipListe::inserer(int v) {
-  SkipCellule* nlle = new SkipCellule(v) ;
 
+  if(m_sentinelle->suivante[0] == nullptr)
+  {
+      SkipCellule* nlle = new SkipCellule(v) ;
+
+      m_sentinelle->suivante[0]=nlle;
+
+  }
   /* cette insertion n'est pas triee, c'est votre travail de le faire */
-  nlle->suivante[0] = m_sentinelle->suivante[0] ;
-  m_sentinelle->suivante[0] = nlle ;
+  //nlle->suivante[0] = m_sentinelle->suivante[0] ;
+
+  //m_sentinelle->suivante[0] = nlle ;
+  else 
+  {
+    if(v < m_sentinelle->suivante[0]->valeur )
+    {
+      SkipCellule* nouveauElement= new SkipCellule(v);
+      
+      nouveauElement->suivante[0]=m_sentinelle->suivante[0];
+      m_sentinelle->suivante[0]=nouveauElement;
+    }
+    else 
+    {
+      SkipCellule* nlle = new SkipCellule(v) ;
+
+      SkipCellule* elementActuel= m_sentinelle->suivante[0];
+
+      SkipCellule* elementPrecedent= m_sentinelle->suivante[0];
+
+      while(v > elementActuel->valeur && elementActuel != nullptr)
+      {
+        elementPrecedent=elementActuel;
+
+        elementActuel=elementActuel->suivante[0];
+      }
+      elementPrecedent->suivante[0]=nlle;
+
+      nlle->suivante[0]=elementActuel;
+    }  
+  }
 
   /* pour trier : avancer dans la liste jusqu'a trouver une valeur plus grande
    * ou la fin de la liste, en gardant le curseur sur la precedente. Une fois arrive
@@ -34,8 +69,17 @@ void SkipListe::inserer(int v) {
 }
 
 SkipCellule* SkipListe::chercher(int v) {
+
+  SkipCellule* elementActuel=m_sentinelle->suivante[0];
+
+  while(v != elementActuel->valeur && elementActuel != nullptr)
+  {
+
+    elementActuel=elementActuel->suivante[0];
+
+  }
   /* cette recherche ne fait rien, c'est votre travail de coder cette fonction */
-  return nullptr ;
+  return elementActuel ;
 
   /* pour chercher dans une liste triee : avancer dans la liste tant qu'on est
    * sur une valeur strictement plus petite. Si on arrive sur une valeur égale,

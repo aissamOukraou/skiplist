@@ -10,7 +10,7 @@ class SkipListe {
 
     /* construction, destruction */
     SkipListe() ;
-    ~SkipListe() ;
+    ~SkipListe() ; 
 
     /* suppression de la copie pour le moment */
     SkipListe(const SkipListe&) = delete ;
