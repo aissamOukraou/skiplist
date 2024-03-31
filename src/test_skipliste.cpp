@@ -11,12 +11,19 @@ int main() {
     for(int i = 20; i >= 0; --i) {
       sl.inserer(i) ;
     }
-    sl.afficher() ;
 
-    //assert(sl.test_tri()) ;
+    /*for(int j=0; j<=20 ; j++)
+    {
+      sl.inserer(j);
+    }*/
+    //sl.afficher() ;
+    //sl.inserer(50);
+    assert(sl.test_tri()) ;
+    sl.ajouter_niveau();
+    sl.afficher();
   }
 
-  /*{ //insertion en n'assurant plus le tri
+  { //insertion en n'assurant plus le tri
     SkipListe sl ;
 
     //generateurs aleatoires
@@ -30,5 +37,5 @@ int main() {
 
     assert(sl.test_tri()) ;
   }
-  */
+  
 }
