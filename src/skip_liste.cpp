@@ -1,6 +1,7 @@
  #include "skip_liste.hpp"
 
 #include <iostream>
+using namespace std;
 
 SkipListe::SkipListe() {
   /* la valeur est inutile, mais on met -2147483648 */
@@ -15,90 +16,81 @@ SkipListe::~SkipListe() {
 void SkipListe::inserer(int v) {
 
 
-  if(m_sentinelle->suivante.size() >=2 )
-  {
-
+  if(m_sentinelle->suivante.size()>=2 )
+  {    
     SkipCellule* nouveauElement= new SkipCellule(v);
 
-    int i=m_sentinelle->suivante.size()-1;
-
-    SkipCellule* elementActuel= m_sentinelle->suivante[i];
-    SkipCellule* actuelHorizental=nullptr;
+    SkipCellule* elementActuel= m_sentinelle->suivante[1];
 
     SkipCellule* elementPrecedent=nullptr;
 
-    //SkipCellule* elementPrecedent=nullptr;
-    if(elementActuel->valeur == v)
+    while(elementActuel != nullptr && elementActuel->valeur < v )
     {
-      
-    }
-    while(elementActuel != nullptr && elementActuel->valeur > v)
-    {    
-      i--;
-      elementActuel=elementActuel->suivante[i];
+      elementPrecedent=elementActuel;
 
-      actuelHorizental=elementActuel;
-
-    } 
-      
-    while(actuelHorizental != nullptr && actuelHorizental->valeur < v)
-    {
-      elementPrecedent=actuelHorizental;
-
-      actuelHorizental=actuelHorizental->suivante[i];
+      elementActuel=elementActuel->suivante[1];
 
     }
-
-    elementPrecedent->suivante[i]=nouveauElement;
-    nouveauElement->suivante[i]=actuelHorizental;
-
+    elementActuel=elementPrecedent;
+    
+    while(elementActuel != nullptr && elementActuel->valeur < v )
+    {
+      elementPrecedent=elementActuel;
+      elementActuel=elementActuel->suivante[0];
+    }
+    if(elementActuel == nullptr)
+    {
+      elementPrecedent->suivante[0]=nouveauElement;
+    }
+    else 
+    {
+      elementPrecedent->suivante[0]=nouveauElement;
+      nouveauElement->suivante[0]=elementActuel;
+    }
   }
 
-  else 
+  else if(m_sentinelle->suivante.size()==1)
   {
 
     if(m_sentinelle->suivante[0] == nullptr)
-    {
-        SkipCellule* nlle = new SkipCellule(v) ;
+      {
+          SkipCellule* nlle = new SkipCellule(v) ;
 
-        m_sentinelle->suivante[0]=nlle;
+          m_sentinelle->suivante[0]=nlle;
 
-    }
+      }
 
     else 
-    {
+      {
     
-      if(v <= m_sentinelle->suivante[0]->valeur )
-      {
-        SkipCellule* nouveauElement= new SkipCellule(v);
-
-        nouveauElement->suivante[0]=m_sentinelle->suivante[0];
-        m_sentinelle->suivante[0]=nouveauElement;
-      }
-      else if(v > m_sentinelle->suivante[0]->valeur)
-      {
-        //std::cout <<" Dans le bout ou il y a le while"<<std::endl;
-        SkipCellule* nlle = new SkipCellule(v) ;
-
-        SkipCellule* elementActuel= m_sentinelle->suivante[0];
-        //elementActuel=elementActuel->suivante[0];
-        SkipCellule* elementPrecedent= nullptr;
-
-        while(elementActuel != nullptr && elementActuel->valeur < v )
+        if(v <= m_sentinelle->suivante[0]->valeur )
         {
-    
-          elementPrecedent=elementActuel;
+          SkipCellule* nouveauElement= new SkipCellule(v);
 
-          elementActuel=elementActuel->suivante[0];
-
+          nouveauElement->suivante[0]=m_sentinelle->suivante[0];
+          m_sentinelle->suivante[0]=nouveauElement;
         }
-        elementPrecedent->suivante[0]=nlle;
-        nlle->suivante[0]=elementActuel;  
+        else if(v > m_sentinelle->suivante[0]->valeur)
+        {
+          SkipCellule* nlle = new SkipCellule(v) ;
+
+          SkipCellule* elementActuel= m_sentinelle->suivante[0];
+          SkipCellule* elementPrecedent= nullptr;
+
+          while(elementActuel != nullptr && elementActuel->valeur < v )
+          {
+    
+            elementPrecedent=elementActuel;
+
+            elementActuel=elementActuel->suivante[0];
+
+          }
+          elementPrecedent->suivante[0]=nlle;
+          nlle->suivante[0]=elementActuel;  
+        }  
       }  
-    }
-  }  
-  
-  
+  }
+   // j'ai traite le premier niveau en haut
 
   /* pour trier : avancer dans la liste jusqu'a trouver une valeur plus grande
    * ou la fin de la liste, en gardant le curseur sur la precedente. Une fois arrive
@@ -160,17 +152,10 @@ bool SkipListe::test_tri() {
 }
 
 void SkipListe::afficher() {
-  std::cout << "[ " ;
-  //parcours lineaire du niveau 0
-  SkipCellule* courante = m_sentinelle->suivante[0] ;
-  while(courante) {
-    std::cout << courante->valeur << " " ;
-    courante = courante->suivante[0] ;
-  }
-  std::cout <<std::endl;
 
-  if(m_sentinelle->suivante.size()==2)
+  if(m_sentinelle->suivante.size()>=2)
   {
+    std::cout << "[ " ;
     SkipCellule* niveau=m_sentinelle->suivante[1];
 
     while(niveau != nullptr)
@@ -181,8 +166,18 @@ void SkipListe::afficher() {
 
     }
 
-  std::cout << "]" << std::endl ;
+    std::cout << "]" << std::endl ;
   }
+  std::cout << "[ " ;
+  //parcours lineaire du niveau 0
+  SkipCellule* courante = m_sentinelle->suivante[0] ;
+  while(courante) {
+    std::cout << courante->valeur << " " ;
+    courante = courante->suivante[0] ;
+  }
+  std::cout << "]" << std::endl ;
+  std::cout <<std::endl;
+  
 }  
 
 bool SkipListe::pile_ou_face() {

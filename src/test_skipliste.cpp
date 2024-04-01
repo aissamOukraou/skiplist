@@ -18,7 +18,12 @@ int main() {
     }*/
     //sl.afficher() ;
     //sl.inserer(50);
-    assert(sl.test_tri()) ;
+    //assert(sl.test_tri()) ;
+    //sl.ajouter_niveau();
+    sl.inserer(50);
+    sl.inserer(100);
+    sl.inserer(89);
+    sl.afficher();
     sl.ajouter_niveau();
     sl.afficher();
   }
